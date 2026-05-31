@@ -54,19 +54,23 @@ export function autoRepairSchema() {
     // geo: { "@type": "GeoCoordinates", latitude, longitude } — see client_questions.md
     openingHoursSpecification,
     areaServed: ["Rainham", "Upminster", "Hornchurch", "Dagenham", "London"],
-    makesOffer: brand.repairs.map((r) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: r.name, description: r.summary },
-      ...(r.priceFrom
-        ? {
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              priceCurrency: "GBP",
-              minPrice: Number(r.priceFrom.replace(/[^\d.]/g, "")),
-            },
-          }
-        : {}),
-    })),
+    makesOffer: brand.repairs.map((r) => {
+      // Only some repair items declare priceFrom — narrow with `in` so TS allows access.
+      const priceFrom = "priceFrom" in r ? r.priceFrom : undefined;
+      return {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: r.name, description: r.summary },
+        ...(priceFrom
+          ? {
+              priceSpecification: {
+                "@type": "PriceSpecification",
+                priceCurrency: "GBP",
+                minPrice: Number(priceFrom.replace(/[^\d.]/g, "")),
+              },
+            }
+          : {}),
+      };
+    }),
     award: "RAC Approved Garage",
     aggregateRating: {
       "@type": "AggregateRating",
