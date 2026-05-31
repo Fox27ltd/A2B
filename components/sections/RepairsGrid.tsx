@@ -27,6 +27,8 @@ export function RepairsGrid({ excludeIds = [] }: { excludeIds?: string[] }) {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((r, i) => {
             const Icon = ((Icons as unknown) as Record<string, LucideIcon>)[r.icon] ?? Icons.Wrench;
+            // Only some repair items declare priceFrom — narrow via `in`.
+            const priceFrom = "priceFrom" in r ? r.priceFrom : undefined;
             return (
               <motion.article
                 key={r.id}
@@ -38,9 +40,9 @@ export function RepairsGrid({ excludeIds = [] }: { excludeIds?: string[] }) {
               >
                 <div className="flex items-start justify-between">
                   <Icon className="h-6 w-6 text-accent" />
-                  {("priceFrom" in r && r.priceFrom) ? (
+                  {priceFrom ? (
                     <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-                      from {r.priceFrom}
+                      from {priceFrom}
                     </span>
                   ) : null}
                 </div>
