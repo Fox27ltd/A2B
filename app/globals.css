@@ -1,0 +1,43 @@
+/* v0.1 — Base theme. CSS vars populated by RootLayout via brand.config. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ink: #0F1419;
+  --color-surface: #15191F;
+  --color-muted: #9AA3AD;
+  --color-line: #252B33;
+  --color-accent: #F39C12;
+}
+
+html, body {
+  background: var(--color-ink);
+  color: #F4F5F7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #0F1419;
+}
+
+/* Hairline border util */
+.hairline { border-color: var(--color-line); }
+
+/* Container util used across sections */
+.container-x {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+@media (min-width: 768px) {
+  .container-x { padding-left: 2rem; padding-right: 2rem; }
+}
