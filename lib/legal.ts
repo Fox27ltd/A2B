@@ -3,6 +3,14 @@
 // TBD values must be confirmed with the client BEFORE going live.
 import { brand } from "@/config/brand.config";
 
+// Cookie entry shape — declared so an empty list[] still type-checks.
+type CookieEntry = {
+  name: string;
+  purpose: string;
+  duration: string;
+  category: string;
+};
+
 export const legal = {
   // ---------- Data controller ----------
   // Confirm with client whether they are sole trader, partnership, or Ltd.
@@ -64,10 +72,9 @@ export const legal = {
   // Today the site sets ZERO non-essential cookies. Update this when analytics added.
   cookies: {
     usesNonEssentialCookies: false,
-    list: [
-      // Add entries here when you turn on analytics, e.g.
-      // { name: "_ga", purpose: "Google Analytics — measures site usage", duration: "2 years", category: "analytics" },
-    ],
+    list: [] as CookieEntry[],
+    // Add entries here when you turn on analytics, e.g.
+    // { name: "_ga", purpose: "Google Analytics — measures site usage", duration: "2 years", category: "analytics" },
   },
 
   // ---------- Effective date ----------
