@@ -72,4 +72,7 @@ export const legal = {
 
   // ---------- Effective date ----------
   effectiveDate: "30 May 2026", // bump on any material change
-} as const;
+};
+// NOTE: deliberately NOT `as const` — TBD placeholders need to widen to `string`
+// so the runtime checks (`structure === "Limited company"`, `icoNumber !== "TBD"`)
+// type-check cleanly.
