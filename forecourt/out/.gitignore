@@ -1,0 +1,3 @@
+# Generated reports are client-specific and not worth committing.
+*
+!.gitignore

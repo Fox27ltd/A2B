@@ -1,0 +1,20 @@
+{
+  "_comment": "Set membershipGBP to what you actually pay. Claude Pro is about £17/month; Max is about £75-90/month. Everything else is the real cost of running Fox27.",
+  "currency": "£",
+  "costs": {
+    "membershipGBP": 17,
+    "otherMonthlyGBP": 0
+  },
+  "prices": {
+    "auditOneOff": 49,
+    "auditPairWithCall": 99,
+    "storefrontOneOff": 1500,
+    "storefrontSetup": 750,
+    "storefrontMonthly": 55,
+    "pulseMonthly": 150,
+    "backroomMonthly": 325
+  },
+  "targets": {
+    "coverageMultiple": 3
+  }
+}
