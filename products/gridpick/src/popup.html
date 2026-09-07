@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Gridpick</title><link rel="stylesheet" href="popup.css"></head>
+<body>
+<header>
+  <div class="brand"><span class="mark"></span>Gridpick</div>
+  <button id="upgrade" class="badge" hidden>Free</button>
+</header>
+
+<main>
+  <div id="status" class="status">Scanning the page…</div>
+
+  <ul id="list" class="list" hidden></ul>
+
+  <section id="preview" class="preview" hidden>
+    <div class="preview-head">
+      <span id="preview-meta"></span>
+      <button id="back" class="link">‹ all data</button>
+    </div>
+    <div class="scroll"><table id="grid"></table></div>
+
+    <div class="formats" id="formats"></div>
+
+    <div class="actions">
+      <button id="copy" class="primary">Copy</button>
+      <button id="download">Download</button>
+    </div>
+
+    <label class="opt" id="crawl-opt">
+      <input type="checkbox" id="crawl"> Follow "next page" links
+      <span class="pro-tag">Pro</span>
+    </label>
+  </section>
+
+  <div class="foot">
+    <button id="pick" class="link">Pick manually <span class="pro-tag">Pro</span></button>
+    <button id="rescan" class="link">Rescan</button>
+  </div>
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="license.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

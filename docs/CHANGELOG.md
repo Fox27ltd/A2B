@@ -2,6 +2,21 @@
 
 Track template-level changes here (not client-specific copy). Client repos pin against the template version noted in their initial commit.
 
+## v1.2 — 2026-09-07
+
+Adds `products/` — standalone software products, unrelated to the site template.
+
+- `products/gridpick/` — Chrome extension (MV3, zero dependencies, no build step)
+  that extracts tables and repeated list structures from any page to CSV, TSV,
+  JSON or Markdown. Real tables are parsed into a grid honouring colspan/rowspan;
+  everything else is found by fingerprinting sibling shape, with columns inferred
+  from content position and named from class/tag. Free tier covers HTML tables;
+  Pro covers inferred lists, click-to-pick, extra formats and multi-page crawl.
+  15 detection assertions run in headless Chromium via `test/run.sh`.
+  Ships with store listing, permission justifications, data-disclosure answers,
+  privacy policy and a one-session setup guide.
+- `products/BRIEF.md` — the options considered with honest odds, and why this one.
+
 ## v1.1 — 2026-09-07
 
 Sales tooling. No changes to the site template itself.

@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>Gridpick popup preview</title>
+<link rel="stylesheet" href="../src/popup.css">
+<style>body{width:390px;margin:0}</style></head>
+<body>
+<header>
+  <div class="brand"><span class="mark"></span>Gridpick</div>
+  <button id="upgrade" class="badge" hidden>Free</button>
+</header>
+
+<main>
+  <div id="status" class="status">Scanning the page…</div>
+
+  <ul id="list" class="list" hidden></ul>
+
+  <section id="preview" class="preview" hidden>
+    <div class="preview-head">
+      <span id="preview-meta"></span>
+      <button id="back" class="link">‹ all data</button>
+    </div>
+    <div class="scroll"><table id="grid"></table></div>
+
+    <div class="formats" id="formats"></div>
+
+    <div class="actions">
+      <button id="copy" class="primary">Copy</button>
+      <button id="download">Download</button>
+    </div>
+
+    <label class="opt" id="crawl-opt">
+      <input type="checkbox" id="crawl"> Follow "next page" links
+      <span class="pro-tag">Pro</span>
+    </label>
+  </section>
+
+  <div class="foot">
+    <button id="pick" class="link">Pick manually <span class="pro-tag">Pro</span></button>
+    <button id="rescan" class="link">Rescan</button>
+  </div>
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+
+
+
+<script>
+// Minimal chrome API stub so the popup can be rendered and eyeballed outside
+// of an actual extension host.
+const MOCK = [
+  { index:0, kind:"list", count:48, columns:["title","price","stock","link"],
+    preview:[["Brake Discs (Front Pair)","£84.99","In stock","https://x/p/1"],
+             ["Oil Filter","£7.50","In stock","https://x/p/2"],
+             ["Cambelt Kit","£142.00","2 left","https://x/p/3"],
+             ["Wiper Blades","£18.25","In stock","https://x/p/4"]] },
+  { index:1, kind:"table", count:12, columns:["Service","Price","Turnaround"],
+    preview:[["MOT","£35","1 hour"],["Interim service","£99","Same day"]] },
+  { index:2, kind:"list", count:5, columns:["title","addr","rating","date"],
+    preview:[["Bloggs Motors","12 High St, Rainham","4.8","2026-08-01"]] }
+];
+window.chrome = {
+  tabs: {
+    query: async () => [{ id: 1, url: "https://example.com/shop" }],
+    sendMessage: async (id, msg) => msg.type === "SCAN"
+      ? { ok: true, tables: MOCK, title: "Shop", url: "https://example.com/shop" }
+      : { ok: true },
+    create: () => {},
+  },
+  runtime: { sendMessage: async () => ({ ok: true }), onMessage: { addListener: () => {} } },
+  storage: { local: { get: async () => ({}), set: async () => {} } },
+};
+</script>
+<script src="../src/license.js"></script>
+<script src="../src/popup.js"></script>
+<script>
+if (location.search.includes("open")) {
+  setTimeout(() => {
+    const btns = document.querySelectorAll("#list button");
+    for (const b of btns) if (!b.disabled) { b.click(); break; }
+  }, 300);
+}
+</script></body></html>

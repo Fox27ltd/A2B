@@ -1,0 +1,24 @@
+.gridpick-overlay {
+  position: absolute;
+  z-index: 2147483646;
+  pointer-events: none;
+  border: 2px solid #F39C12;
+  background: rgba(243, 156, 18, .13);
+  border-radius: 3px;
+  box-shadow: 0 0 0 9999px rgba(15, 20, 25, .28);
+  transition: top .05s, left .05s, width .05s, height .05s;
+  display: none;
+}
+.gridpick-label {
+  position: absolute;
+  z-index: 2147483647;
+  pointer-events: none;
+  background: #F39C12;
+  color: #0F1419;
+  font: 600 12px/1 -apple-system, system-ui, "Segoe UI", sans-serif;
+  padding: 5px 8px;
+  border-radius: 4px 4px 0 0;
+  white-space: nowrap;
+  display: none;
+}
+html.gridpick-picking, html.gridpick-picking * { cursor: crosshair !important; }

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Gridpick fixtures</title>
+<style>.card{padding:8px}.row{padding:6px}nav a{margin:4px}</style></head>
+<body>
+
+<!-- junk that must not be picked up -->
+<nav class="site-nav"><a href="/a">Home</a><a href="/b">Shop</a><a href="/c">About</a><a href="/d">Contact</a></nav>
+<ul class="pagination"><li><a href="?p=1">1</a></li><li><a href="?p=2">2</a></li><li><a href="?p=3">3</a></li></ul>
+
+<!-- 1. a real table with colspan and rowspan -->
+<table id="fees">
+  <thead><tr><th>Service</th><th>Price</th><th>Turnaround</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2">MOT</td><td>£35</td><td>1 hour</td></tr>
+    <tr><td>£45 (retest)</td><td>30 min</td></tr>
+    <tr><td>Interim service</td><td>£99</td><td>Same day</td></tr>
+    <tr><td>Full service</td><td colspan="2">£189 — same day</td></tr>
+  </tbody>
+</table>
+
+<!-- 2. a product grid rendered from a loop -->
+<div class="product-grid">
+  <div class="card product"><a href="/p/1"><img src="/img/1.jpg" alt="One"></a>
+    <h3 class="product-title">Brake Discs (Front Pair)</h3>
+    <span class="price">£84.99</span><span class="stock">In stock</span>
+    <button class="buy">Add to basket</button></div>
+  <div class="card product"><a href="/p/2"><img src="/img/2.jpg" alt="Two"></a>
+    <h3 class="product-title">Oil Filter</h3>
+    <span class="price">£7.50</span><span class="stock">In stock</span>
+    <button class="buy">Add to basket</button></div>
+  <div class="card product"><a href="/p/3"><img src="/img/3.jpg" alt="Three"></a>
+    <h3 class="product-title">Cambelt Kit</h3>
+    <span class="price">£142.00</span><span class="stock">2 left</span>
+    <button class="buy">Add to basket</button></div>
+  <div class="card product is-active"><a href="/p/4"><img src="/img/4.jpg" alt="Four"></a>
+    <h3 class="product-title">Wiper Blades</h3>
+    <span class="price">£18.25</span><span class="stock">In stock</span>
+    <button class="buy">Add to basket</button></div>
+</div>
+
+<!-- 3. search-result rows, varying fields -->
+<section class="results">
+  <article class="row result"><h2><a href="/g/1">Bloggs Motors</a></h2>
+    <p class="addr">12 High St, Rainham</p><span class="rating">4.8</span>
+    <time datetime="2026-08-01">1 Aug</time></article>
+  <article class="row result"><h2><a href="/g/2">Upminster Autos</a></h2>
+    <p class="addr">4 Station Rd, Upminster</p><span class="rating">4.2</span>
+    <time datetime="2026-08-03">3 Aug</time></article>
+  <article class="row result"><h2><a href="/g/3">Hornchurch Service Centre</a></h2>
+    <p class="addr">88 Mill Lane, Hornchurch</p><span class="rating">3.9</span>
+    <time datetime="2026-08-05">5 Aug</time></article>
+  <article class="row result"><h2><a href="/g/4">A1 Tyres</a></h2>
+    <p class="addr">7 Cherry Tree Ln, Rainham</p><span class="rating">4.5</span>
+    <time datetime="2026-08-09">9 Aug</time></article>
+  <article class="row result"><h2><a href="/g/5">Kwik Garage</a></h2>
+    <p class="addr">2 Broadway, Rainham</p><span class="rating">4.1</span>
+    <time datetime="2026-08-11">11 Aug</time></article>
+</section>
+
+<pre id="out">running</pre>
+<script src="../src/detect.js"></script>
+<script src="../src/csv.js"></script>
+<script src="test.js"></script>
+</body></html>
